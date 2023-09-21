@@ -40,8 +40,14 @@ def fetch_talkpython_episodes():
     _feed = feedparser.parse("https://talkpython.fm/episodes/rss")
     save_new_episodes(_feed)
 
+def fetch_codenewbie_episodes():
+    """fetches new episodes from codenewbie rss feed"""
+    _feed = feedparser.parse('http://feeds.codenewbie.org/cnpodcast.xml')
+    save_new_episodes(_feed)
+
 class Command(BaseCommand):
     """command class"""
     def handle(self , *args, **options):
         fetch_realpython_episodes()
         fetch_talkpython_episodes()
+        fetch_codenewbie_episodes()
